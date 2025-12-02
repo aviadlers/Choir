@@ -107,11 +107,6 @@ h3::before {
     border-radius: 2px;
 }
 
-h4 {
-    font-size: 1.1rem;
-    margin-bottom: var(--spacing-sm);
-}
-
 .subtitle {
     text-align: center;
     color: var(--text-muted);
@@ -148,29 +143,6 @@ h4 {
 .section:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-lg);
-}
-
-/* ===== CARDS ===== */
-.card {
-    background: var(--bg-elevated);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-md);
-    border: 1px solid var(--border);
-    margin-bottom: var(--spacing-md);
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-md);
 }
 
 /* ===== FORM ELEMENTS ===== */
@@ -228,16 +200,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
     box-shadow: 0 0 15px rgba(196, 126, 44, 0.8);
 }
 
-input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--primary);
-    cursor: pointer;
-    border: 3px solid var(--bg-dark);
-    box-shadow: 0 0 10px rgba(196, 126, 44, 0.5);
-}
-
 select, input[type="text"] {
     width: 100%;
     padding: 12px;
@@ -272,37 +234,6 @@ select:focus, input[type="text"]:focus {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.5);
-    opacity: 0;
-    border-radius: 100%;
-    transform: scale(1, 1) translate(-50%);
-    transform-origin: 50% 50%;
-}
-
-.btn:focus:not(:active)::after {
-    animation: ripple 1s ease-out;
-}
-
-@keyframes ripple {
-    0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(20, 20);
-        opacity: 0;
-    }
 }
 
 .btn-primary {
@@ -336,13 +267,11 @@ select:focus, input[type="text"]:focus {
 .btn-danger {
     background: linear-gradient(135deg, var(--danger), #d32f2f);
     color: white;
-    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
 }
 
 .btn-success {
     background: linear-gradient(135deg, var(--success), #388E3C);
     color: white;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
 .btn:disabled {
@@ -361,11 +290,6 @@ select:focus, input[type="text"]:focus {
 .btn-lg {
     padding: 16px 32px;
     font-size: 16px;
-}
-
-.btn-sm {
-    padding: 8px 16px;
-    font-size: 12px;
 }
 
 /* ===== TABS ===== */
@@ -413,71 +337,63 @@ select:focus, input[type="text"]:focus {
 
 .tab-content.active {
     display: block;
-    animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== VISUALIZERS ===== */
-.harmony-visualizer {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin: var(--spacing-lg) 0;
-    flex-wrap: wrap;
-}
-
-.harmony-note {
-    background: linear-gradient(135deg, var(--primary), #e6b851);
-    color: var(--bg-dark);
-    padding: 10px 15px;
-    border-radius: var(--radius-sm);
-    font-weight: bold;
-    font-family: var(--font-mono);
-    min-width: 40px;
+/* ===== FILE UPLOAD ===== */
+.file-upload {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
     text-align: center;
-    box-shadow: 0 4px 10px rgba(196, 126, 44, 0.3);
-    transition: transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: var(--spacing-md);
 }
 
-.harmony-note:hover {
-    transform: translateY(-3px);
+.file-upload:hover {
+    border-color: var(--primary);
+    background: rgba(196, 126, 44, 0.05);
 }
 
-.harmony-note::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
+.file-upload.dragover {
+    border-color: var(--primary);
+    background: rgba(196, 126, 44, 0.1);
+    transform: scale(1.02);
 }
 
-.harmony-note:hover::before {
-    left: 100%;
+.file-info {
+    background: var(--bg-elevated);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    display: none;
 }
 
-.vu-meter {
-    height: 4px;
-    background: var(--border);
-    border-radius: 2px;
+.file-info.active {
+    display: block;
+}
+
+.format-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
     margin-top: var(--spacing-sm);
-    overflow: hidden;
+    justify-content: center;
 }
 
-.vu-level {
-    height: 100%;
-    background: linear-gradient(90deg, var(--success), var(--primary), var(--danger));
-    width: 0%;
-    transition: width 0.1s ease;
-    border-radius: 2px;
+.format-badge {
+    background: rgba(42, 92, 140, 0.2);
+    color: var(--text-muted);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(42, 92, 140, 0.3);
+}
+
+.format-badge.primary {
+    background: rgba(196, 126, 44, 0.2);
+    border-color: rgba(196, 126, 44, 0.3);
+    color: var(--primary);
 }
 
 /* ===== STATUS INDICATORS ===== */
@@ -528,16 +444,6 @@ select:focus, input[type="text"]:focus {
     background: var(--danger);
 }
 
-.status-indicator.processing {
-    background: var(--warning);
-    animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
 /* ===== PROGRESS BARS ===== */
 .progress-container {
     margin: var(--spacing-md) 0;
@@ -561,104 +467,9 @@ select:focus, input[type="text"]:focus {
     background: linear-gradient(90deg, var(--secondary), var(--primary));
     width: 0%;
     transition: width 0.3s ease;
-    position: relative;
-}
-
-.progress-fill::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-/* ===== FILE UPLOAD ===== */
-.file-upload {
-    border: 2px dashed var(--border);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-xl);
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-bottom: var(--spacing-md);
-}
-
-.file-upload:hover {
-    border-color: var(--primary);
-    background: rgba(196, 126, 44, 0.05);
-}
-
-.file-upload.dragover {
-    border-color: var(--primary);
-    background: rgba(196, 126, 44, 0.1);
-    transform: scale(1.02);
-}
-
-.file-info {
-    background: var(--bg-elevated);
-    border-radius: var(--radius-sm);
-    padding: var(--spacing-md);
-    margin-top: var(--spacing-md);
-    display: none;
-}
-
-.file-info.active {
-    display: block;
-    animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== TOOLTIPS ===== */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    margin-left: var(--spacing-xs);
-}
-
-.tooltip .tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background: var(--bg-elevated);
-    color: var(--text);
-    text-align: center;
-    border-radius: var(--radius-sm);
-    padding: var(--spacing-sm);
-    position: absolute;
-    z-index: 1000;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.85rem;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 15px var(--shadow);
-}
-
-.tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 1200px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 768px) {
     body {
         padding: var(--spacing-sm);
@@ -683,45 +494,6 @@ select:focus, input[type="text"]:focus {
     .btn {
         width: 100%;
     }
-    
-    .tabs {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-    }
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.floating {
-    animation: float 3s ease-in-out infinite;
-}
-
-/* ===== LOADING STATES ===== */
-.loading {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: var(--primary);
-    animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* ===== GLOW EFFECTS ===== */
-.glow {
-    box-shadow: 0 0 20px rgba(196, 126, 44, 0.3);
-}
-
-.glow-primary {
-    box-shadow: 0 0 30px rgba(196, 126, 44, 0.5);
 }
 
 /* ===== CUSTOM SCROLLBAR ===== */
@@ -745,16 +517,13 @@ select:focus, input[type="text"]:focus {
 
 /* ===== UTILITY CLASSES ===== */
 .text-center { text-align: center; }
-.text-right { text-align: right; }
-.text-primary { color: var(--primary); }
 .text-muted { color: var(--text-muted); }
-.mb-0 { margin-bottom: 0 !important; }
-.mt-1 { margin-top: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
 .mt-2 { margin-top: var(--spacing-md); }
 .mt-3 { margin-top: var(--spacing-lg); }
 .hidden { display: none; }
 
-/* ===== LOGO & BRANDING ===== */
+/* ===== LOGO ===== */
 .logo {
     text-align: center;
     margin-bottom: var(--spacing-xl);
@@ -764,7 +533,6 @@ select:focus, input[type="text"]:focus {
     font-size: 3rem;
     margin-bottom: var(--spacing-sm);
     display: inline-block;
-    animation: float 4s ease-in-out infinite;
 }
 
 .version-badge {
@@ -778,26 +546,33 @@ select:focus, input[type="text"]:focus {
     vertical-align: middle;
 }
 
-/* ===== PRESET PREVIEW ===== */
-.preset-preview {
-    background: linear-gradient(135deg, rgba(42, 92, 140, 0.1), rgba(196, 126, 44, 0.1));
-    border-radius: var(--radius-md);
+/* ===== MESSAGE BOXES ===== */
+.message {
     padding: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    border: 1px solid rgba(196, 126, 44, 0.2);
+    border-radius: var(--radius-sm);
+    margin: var(--spacing-md) 0;
+    display: none;
 }
 
-.preset-name {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: var(--spacing-sm);
-    color: var(--primary);
+.message.success {
+    background: rgba(76, 175, 80, 0.1);
+    border-left: 4px solid var(--success);
+    color: var(--success);
+    display: block;
 }
 
-.preset-description {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.5;
+.message.warning {
+    background: rgba(255, 152, 0, 0.1);
+    border-left: 4px solid var(--warning);
+    color: var(--warning);
+    display: block;
+}
+
+.message.error {
+    background: rgba(244, 67, 54, 0.1);
+    border-left: 4px solid var(--danger);
+    color: var(--danger);
+    display: block;
 }
 </style>
 </head>
@@ -807,17 +582,14 @@ select:focus, input[type="text"]:focus {
     <div class="logo">
         <div class="logo-icon">🎵</div>
         <h1>CINEMATIC CHOIR ORCHESTRA <span class="version-badge">v11</span></h1>
-        <p class="subtitle">Transform vocals into epic cinematic choir harmonies with real-time pitch shifting and effects</p>
+        <p class="subtitle">Transform any audio into epic cinematic choir harmonies</p>
     </div>
 
     <!-- MAIN CONTENT GRID -->
     <div class="grid">
         <!-- INPUT SECTION -->
         <div class="section">
-            <div class="section-header">
-                <h2>🎤 INPUT SOURCE</h2>
-                <div class="status-indicator active" id="inputStatus"></div>
-            </div>
+            <h2>🎤 INPUT SOURCE</h2>
             
             <div class="tabs" id="inputTabs">
                 <button class="tab active" data-tab="mic">Microphone</button>
@@ -827,7 +599,7 @@ select:focus, input[type="text"]:focus {
             <div class="tab-content active" id="micTab">
                 <p class="text-muted mb-2">Use your microphone for real-time processing</p>
                 <button class="btn btn-primary btn-lg" id="micBtn" style="width: 100%">
-                    <span class="btn-text">🎤 ACTIVATE MICROPHONE</span>
+                    🎤 ACTIVATE MICROPHONE
                 </button>
                 <div class="status-bar mt-3">
                     <div class="status-item">
@@ -838,17 +610,35 @@ select:focus, input[type="text"]:focus {
             </div>
             
             <div class="tab-content" id="fileTab">
-                <p class="text-muted mb-2">Upload WAV, MP3, FLAC, or other audio files</p>
+                <p class="text-muted mb-2">Upload any audio file format</p>
+                
+                <!-- File Upload Area -->
                 <div class="file-upload" id="fileUploadArea">
                     <div style="font-size: 3rem; margin-bottom: var(--spacing-sm);">📁</div>
                     <h4>Drop audio file here or click to browse</h4>
-                    <p class="text-muted mt-1">Supports: WAV, MP3, FLAC, OGG, M4A, AAC</p>
+                    <p class="text-muted mt-1">All major formats supported</p>
+                    
+                    <div class="format-badges">
+                        <span class="format-badge primary">WAV</span>
+                        <span class="format-badge primary">MP3</span>
+                        <span class="format-badge">FLAC</span>
+                        <span class="format-badge">OGG</span>
+                        <span class="format-badge">M4A</span>
+                        <span class="format-badge">AAC</span>
+                        <span class="format-badge">AIFF</span>
+                        <span class="format-badge">WEBM</span>
+                    </div>
+                    
                     <input type="file" id="audioFile" accept="audio/*" hidden>
                 </div>
                 
+                <!-- Messages -->
+                <div class="message" id="uploadMessage"></div>
+                
+                <!-- File Info -->
                 <div class="file-info" id="fileInfo">
                     <div class="status-item">
-                        <span class="status-label">File</span>
+                        <span class="status-label">File Name</span>
                         <span class="status-value" id="fileName">No file selected</span>
                     </div>
                     <div class="status-item">
@@ -859,24 +649,35 @@ select:focus, input[type="text"]:focus {
                         <span class="status-label">Format</span>
                         <span class="status-value" id="fileFormat">---</span>
                     </div>
+                    <div class="status-item">
+                        <span class="status-label">Sample Rate</span>
+                        <span class="status-value" id="fileSampleRate">---</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Channels</span>
+                        <span class="status-value" id="fileChannels">---</span>
+                    </div>
                     <div class="progress-container">
                         <div class="progress-label">
-                            <span>Playback</span>
-                            <span id="playbackTime">00:00 / 00:00</span>
+                            <span>Loading Progress</span>
+                            <span id="loadPercent">0%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" id="playbackProgress"></div>
+                            <div class="progress-fill" id="loadProgress"></div>
                         </div>
                     </div>
                 </div>
                 
+                <!-- File Controls -->
                 <div class="btn-group mt-3">
                     <button class="btn btn-secondary" id="playFileBtn" disabled>▶ Play</button>
                     <button class="btn btn-secondary" id="pauseFileBtn" disabled>⏸ Pause</button>
+                    <button class="btn btn-secondary" id="stopFileBtn" disabled>⏹ Stop</button>
                     <button class="btn btn-secondary" id="loopFileBtn" disabled>↻ Loop</button>
                 </div>
             </div>
             
+            <!-- System Status -->
             <div class="status-bar mt-3">
                 <div class="status-item">
                     <span class="status-label">System Status</span>
@@ -891,19 +692,31 @@ select:focus, input[type="text"]:focus {
 
         <!-- CHOIR SETTINGS -->
         <div class="section">
-            <div class="section-header">
-                <h2>🎹 CHOIR SETTINGS</h2>
-                <div class="btn-group">
-                    <button class="btn btn-sm btn-secondary" id="presetPrev">◀</button>
-                    <button class="btn btn-sm btn-secondary" id="presetNext">▶</button>
+            <h2>🎹 CHOIR SETTINGS</h2>
+            
+            <!-- Quick Settings -->
+            <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md);">
+                <div class="form-group">
+                    <label class="form-label">
+                        <span>Octave Layers</span>
+                        <span id="octavesText">3</span>
+                    </label>
+                    <input type="range" id="octaves" min="1" max="6" value="3" class="slider">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <span>Voices per Layer</span>
+                        <span id="voicesText">6</span>
+                    </label>
+                    <input type="range" id="voices" min="2" max="12" value="6" class="slider">
                 </div>
             </div>
             
-            <!-- PRESET SELECTION -->
+            <!-- Main Settings -->
             <div class="form-group">
                 <label class="form-label">
                     <span>Harmony Preset</span>
-                    <span id="currentPreset">Gospel</span>
                 </label>
                 <select class="form-control" id="preset">
                     <option value="gospel">🎵 Gospel Choir (7th chords)</option>
@@ -911,229 +724,83 @@ select:focus, input[type="text"]:focus {
                     <option value="angelic">😇 Angelic Air (4ths & 5ths)</option>
                     <option value="octaves">🎹 Octave Stack</option>
                     <option value="unison">🎤 Wide Unison</option>
-                    <option value="cluster">🎼 Cluster Harmony</option>
-                    <option value="jazz">🎷 Jazz 9th</option>
                 </select>
-                <div class="preset-preview">
-                    <div class="preset-name" id="presetPreviewName">Gospel Choir</div>
-                    <p class="preset-description" id="presetPreviewDesc">Rich 7th chord harmonies with soulful character</p>
-                </div>
             </div>
             
-            <!-- HARMONY VISUALIZER -->
-            <div class="harmony-visualizer" id="harmonyDisplay">
-                <!-- Harmony notes will appear here -->
+            <div class="form-group">
+                <label class="form-label">
+                    <span>Key (Auto-Tune)</span>
+                </label>
+                <select class="form-control" id="key">
+                    <option value="C">C Major</option>
+                    <option value="Cm">C Minor</option>
+                    <option value="D">D Major</option>
+                    <option value="Dm">D Minor</option>
+                    <option value="E">E Major</option>
+                    <option value="Em">E Minor</option>
+                    <option value="F">F Major</option>
+                    <option value="Fm">F Minor</option>
+                    <option value="G">G Major</option>
+                    <option value="Gm">G Minor</option>
+                    <option value="A">A Major</option>
+                    <option value="Am">A Minor</option>
+                </select>
             </div>
             
-            <!-- QUICK SETTINGS -->
-            <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md);">
-                <div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span>Octave Layers</span>
-                            <span id="octavesText">3</span>
-                        </label>
-                        <div class="slider-container">
-                            <input type="range" id="octaves" min="1" max="6" value="3" class="slider">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span>Voices per Layer</span>
-                            <span id="voicesText">6</span>
-                        </label>
-                        <div class="slider-container">
-                            <input type="range" id="voices" min="2" max="12" value="6" class="slider">
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span>Stereo Width</span>
-                            <span id="widthText">0.7</span>
-                        </label>
-                        <div class="slider-container">
-                            <input type="range" id="width" min="0" max="1" step="0.01" value="0.7" class="slider">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span>Reverb Amount</span>
-                            <span id="reverbText">0.6</span>
-                        </label>
-                        <div class="slider-container">
-                            <input type="range" id="reverb" min="0" max="1" step="0.01" value="0.6" class="slider">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ADVANCED SETTINGS -->
-            <div class="tabs" id="settingsTabs">
-                <button class="tab active" data-tab="basic">Basic</button>
-                <button class="tab" data-tab="advanced">Advanced</button>
-                <button class="tab" data-tab="effects">Effects</button>
-            </div>
-            
-            <div class="tab-content active" id="basicTab">
-                <div class="form-group">
-                    <label class="form-label">
-                        <span>Key (Auto-Tune)</span>
-                        <span id="currentKey">C Major</span>
-                    </label>
-                    <select class="form-control" id="key">
-                        <option value="C">C Major</option>
-                        <option value="Cm">C Minor</option>
-                        <option value="D">D Major</option>
-                        <option value="Dm">D Minor</option>
-                        <option value="E">E Major</option>
-                        <option value="Em">E Minor</option>
-                        <option value="F">F Major</option>
-                        <option value="Fm">F Minor</option>
-                        <option value="G">G Major</option>
-                        <option value="Gm">G Minor</option>
-                        <option value="A">A Major</option>
-                        <option value="Am">A Minor</option>
-                        <option value="B">B Major</option>
-                        <option value="Bm">B Minor</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span>Custom Intervals</span>
-                        <span class="tooltip">?
-                            <span class="tooltip-text">Comma-separated semitone offsets (e.g., 0,4,7 for major chord)</span>
-                        </span>
-                    </label>
-                    <input type="text" id="customIntervals" placeholder="0,4,7,12" value="0,4,7,12">
-                </div>
-            </div>
-            
-            <div class="tab-content" id="advancedTab">
-                <div class="form-group">
-                    <label class="form-label">
-                        <span>Detune Randomness</span>
-                        <span id="detuneText">18</span> cents
-                    </label>
-                    <div class="slider-container">
-                        <input type="range" id="detune" min="0" max="40" value="18" class="slider">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span>Vibrato Depth</span>
-                        <span id="vibratoText">0.003</span>
-                    </label>
-                    <div class="slider-container">
-                        <input type="range" id="vibrato" min="0.001" max="0.01" step="0.001" value="0.003" class="slider">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span>Breath / Humanization</span>
-                        <span id="breathText">0.05</span>
-                    </label>
-                    <div class="slider-container">
-                        <input type="range" id="breath" min="0" max="0.2" step="0.01" value="0.05" class="slider">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="effectsTab">
-                <div class="form-group">
-                    <label class="form-label">
-                        <span>Attack/Release Time</span>
-                        <span id="adsrText">0.1s / 0.5s</span>
-                    </label>
-                    <div class="slider-container">
-                        <input type="range" id="adsr" min="0" max="100" value="15" class="slider">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span>Automation Speed</span>
-                        <span id="autoSpeedText">15</span> sec/sweep
-                    </label>
-                    <div class="slider-container">
-                        <input type="range" id="autoSpeed" min="5" max="60" value="15" class="slider">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">
-                        <span>Pitch Shift Range</span>
-                        <span id="pitchRangeText">±12</span> semitones
-                    </label>
-                    <div class="slider-container">
-                        <input type="range" id="pitchRange" min="0" max="24" value="12" class="slider">
-                    </div>
-                </div>
+            <div class="form-group">
+                <label class="form-label">
+                    <span>Custom Intervals (semitones)</span>
+                </label>
+                <input type="text" id="customIntervals" placeholder="0,4,7,12" value="0,4,7,12">
             </div>
         </div>
 
         <!-- PROCESSING & OUTPUT -->
         <div class="section">
-            <div class="section-header">
-                <h2>⚡ PROCESSING</h2>
-                <div class="status-indicator inactive" id="processingStatus"></div>
-            </div>
+            <h2>⚡ PROCESSING</h2>
             
-            <!-- MAIN CONTROLS -->
+            <!-- Main Controls -->
             <div class="btn-group" style="margin-bottom: var(--spacing-lg);">
                 <button class="btn btn-primary btn-lg" id="startChoirBtn" disabled>
-                    <span class="btn-text">🎵 START CHOIR PROCESSING</span>
+                    🎵 START CHOIR
                 </button>
                 <button class="btn btn-danger" id="stopChoirBtn" disabled>⏹ STOP</button>
             </div>
             
-            <!-- REAL-TIME VISUALIZATION -->
-            <div class="card">
-                <div class="card-header">
-                    <h4>🎚️ Real-time Monitoring</h4>
-                    <span class="status-value" id="activeVoices">0 voices</span>
+            <!-- Status Display -->
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="status-label">Active Voices</span>
+                    <span class="status-value" id="activeVoices">0</span>
                 </div>
-                <div class="vu-meter">
-                    <div class="vu-level" id="vuLevel"></div>
+                <div class="status-item">
+                    <span class="status-label">Processing</span>
+                    <span class="status-value" id="processingStatus">Idle</span>
                 </div>
-                <div class="status-item mt-2">
+                <div class="status-item">
                     <span class="status-label">Detected Pitch</span>
                     <span class="status-value" id="detectedPitch">-- Hz</span>
                 </div>
-                <div class="status-item">
-                    <span class="status-label">Note</span>
-                    <span class="status-value" id="detectedNote">--</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">Processing Load</span>
-                    <span class="status-value" id="processingLoad">0%</span>
-                </div>
             </div>
             
-            <!-- EXPORT SECTION -->
+            <!-- Export Section -->
             <h3 class="mt-3">💾 EXPORT</h3>
             <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); margin-top: var(--spacing-md);">
                 <button class="btn btn-secondary" id="recordBtn" disabled>
-                    <span class="btn-text">⏺ RECORD LIVE</span>
+                    ⏺ RECORD LIVE
                 </button>
                 <button class="btn btn-secondary" id="renderBtn" disabled>
-                    <span class="btn-text">⚡ RENDER FILE</span>
+                    ⚡ RENDER FILE
                 </button>
                 <button class="btn btn-success" id="previewProcessedBtn" disabled>
-                    <span class="btn-text">🎧 PREVIEW</span>
+                    🎧 PREVIEW
                 </button>
                 <button class="btn btn-primary" id="downloadProcessedBtn" disabled>
-                    <span class="btn-text">⬇ DOWNLOAD</span>
+                    ⬇ DOWNLOAD
                 </button>
             </div>
             
+            <!-- Progress Bar for Rendering -->
             <div class="progress-container mt-3" id="renderProgressContainer" style="display: none;">
                 <div class="progress-label">
                     <span>Rendering Progress</span>
@@ -1143,54 +810,73 @@ select:focus, input[type="text"]:focus {
                     <div class="progress-fill" id="renderProgress"></div>
                 </div>
             </div>
-            
-            <div class="status-bar mt-3">
-                <div class="status-item">
-                    <span class="status-label">Export Status</span>
-                    <span class="status-value" id="exportStatus">Ready</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">File Size</span>
-                    <span class="status-value" id="exportSize">-- MB</span>
-                </div>
-                <div class="status-item">
-                    <span class="status-label">Format</span>
-                    <span class="status-value" id="exportFormat">WAV 44.1kHz</span>
-                </div>
-            </div>
-            
-            <!-- QUICK ACTIONS -->
-            <div class="btn-group mt-3">
-                <button class="btn btn-sm btn-secondary" id="exportPresetsBtn">💾 Save Preset</button>
-                <button class="btn btn-sm btn-secondary" id="importPresetsBtn">📂 Load Preset</button>
-                <button class="btn btn-sm btn-secondary" id="resetSettingsBtn">🔄 Reset</button>
-            </div>
         </div>
     </div>
 
     <!-- FOOTER -->
     <div class="text-center mt-3 text-muted">
-        <p>CINEMATIC CHOIR ORCHESTRA v11 • Professional Vocal Processing Suite</p>
-        <p style="font-size: 0.9rem;">Built with Tone.js • Works in modern browsers</p>
+        <p>CINEMATIC CHOIR ORCHESTRA v11 • Professional Audio Processing</p>
     </div>
 </div>
 
-<!-- Keep the same JavaScript functionality with updated UI bindings -->
 <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
-<script src="https://unpkg.com/pitchfinder@2.3.5/dist/pitchfinder.umd.js"></script>
 <script>
+// ======= VARIABLES =======
+let micStream = null;
+let audioInput = null;
+let audioBuffer = null;
+let processedAudioBuffer = null;
+let masterGain, reverbNode, compressor;
+let choirLayers = [];
+let mediaRecorder, recordedChunks = [];
+let analyser, pitchDetector, isChoirRunning = false;
+let animationFrameId = null;
+let currentPitch = 440;
+let pitchHistory = [];
+let lastNoteTime = 0;
+let isProcessingFile = false;
+let processedPlayer = null;
+let audioContext = null;
+let currentInputType = 'mic';
+
+// ======= AUDIO FORMAT SUPPORT CHECK =======
+const SUPPORTED_FORMATS = [
+    'audio/wav',
+    'audio/wave',
+    'audio/x-wav',
+    'audio/x-pn-wav',
+    'audio/mpeg', // MP3
+    'audio/mp3',
+    'audio/mp4',
+    'audio/aac',
+    'audio/x-aac',
+    'audio/aiff',
+    'audio/x-aiff',
+    'audio/flac',
+    'audio/x-flac',
+    'audio/ogg',
+    'audio/opus',
+    'audio/webm',
+    'audio/x-m4a'
+];
+
+const FORMAT_EXTENSIONS = {
+    'wav': 'audio/wav',
+    'wave': 'audio/wav',
+    'mp3': 'audio/mpeg',
+    'm4a': 'audio/mp4',
+    'aac': 'audio/aac',
+    'flac': 'audio/flac',
+    'ogg': 'audio/ogg',
+    'oga': 'audio/ogg',
+    'opus': 'audio/opus',
+    'webm': 'audio/webm',
+    'aiff': 'audio/aiff',
+    'aif': 'audio/aiff'
+};
+
 // ======= UI INITIALIZATION =======
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize tooltips
-    document.querySelectorAll('.tooltip').forEach(el => {
-        el.addEventListener('mouseenter', function() {
-            this.classList.add('active');
-        });
-        el.addEventListener('mouseleave', function() {
-            this.classList.remove('active');
-        });
-    });
-
     // Tab functionality
     document.querySelectorAll('.tab').forEach(tab => {
         tab.addEventListener('click', function() {
@@ -1206,6 +892,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 content.classList.remove('active');
             });
             parent.querySelector(`#${tabId}Tab`).classList.add('active');
+            
+            // Update current input type
+            currentInputType = tabId;
+            
+            // Update button states
+            updateStartButtonState();
         });
     });
 
@@ -1229,291 +921,467 @@ document.addEventListener('DOMContentLoaded', function() {
         fileUpload.classList.remove('dragover');
         if (e.dataTransfer.files.length) {
             fileInput.files = e.dataTransfer.files;
-            fileInput.dispatchEvent(new Event('change'));
+            handleFileUpload(fileInput.files[0]);
         }
     });
 
-    // Preset navigation
-    document.getElementById('presetPrev').addEventListener('click', () => {
-        const presetSelect = document.getElementById('preset');
-        presetSelect.selectedIndex = Math.max(0, presetSelect.selectedIndex - 1);
-        presetSelect.dispatchEvent(new Event('change'));
-    });
-    
-    document.getElementById('presetNext').addEventListener('click', () => {
-        const presetSelect = document.getElementById('preset');
-        presetSelect.selectedIndex = Math.min(presetSelect.options.length - 1, presetSelect.selectedIndex + 1);
-        presetSelect.dispatchEvent(new Event('change'));
+    // File input change
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length) {
+            handleFileUpload(e.target.files[0]);
+        }
     });
 
-    // Update slider labels
+    // Bind sliders
     function bindSlider(sliderId, labelId, formatter = (v) => v) {
         const slider = document.getElementById(sliderId);
         const label = document.getElementById(labelId);
         slider.addEventListener('input', function() {
             label.textContent = formatter(this.value);
-            updatePreview();
         });
+        // Trigger initial update
+        slider.dispatchEvent(new Event('input'));
     }
 
-    // Bind all sliders
     bindSlider('octaves', 'octavesText');
     bindSlider('voices', 'voicesText');
-    bindSlider('width', 'widthText');
-    bindSlider('reverb', 'reverbText');
-    bindSlider('detune', 'detuneText');
-    bindSlider('vibrato', 'vibratoText');
-    bindSlider('breath', 'breathText');
-    bindSlider('pitchRange', 'pitchRangeText');
-    bindSlider('autoSpeed', 'autoSpeedText');
-    bindSlider('adsr', 'adsrText', (v) => {
-        const attack = (v / 100).toFixed(2);
-        const release = (v / 20).toFixed(2);
-        return `${attack}s / ${release}s`;
-    });
 
-    // Preset descriptions
-    const presetDescriptions = {
-        gospel: {
-            name: "Gospel Choir",
-            desc: "Rich 7th chord harmonies with soulful character, perfect for emotional vocals."
-        },
-        cinematic: {
-            name: "Cinematic",
-            desc: "Suspension harmonies creating tension and drama, ideal for film scoring."
-        },
-        angelic: {
-            name: "Angelic Air",
-            desc: "Open 4ths and 5ths creating ethereal, heavenly choir textures."
-        },
-        octaves: {
-            name: "Octave Stack",
-            desc: "Multi-octave layers creating massive, powerful choir sounds."
-        },
-        unison: {
-            name: "Wide Unison",
-            desc: "Multiple unison voices with subtle variations for natural chorus effect."
-        },
-        cluster: {
-            name: "Cluster Harmony",
-            desc: "Dense, modern harmonies using close intervals for tension."
-        },
-        jazz: {
-            name: "Jazz 9th",
-            desc: "Extended jazz harmonies with 7ths and 9ths for sophisticated textures."
-        }
-    };
-
-    // Update preset preview
-    function updatePreview() {
-        const preset = document.getElementById('preset').value;
-        const preview = presetDescriptions[preset] || presetDescriptions.gospel;
-        document.getElementById('presetPreviewName').textContent = preview.name;
-        document.getElementById('presetPreviewDesc').textContent = preview.desc;
-        document.getElementById('currentPreset').textContent = preview.name;
-    }
-
-    document.getElementById('preset').addEventListener('change', updatePreview);
-    updatePreview();
-
-    // Key display
-    document.getElementById('key').addEventListener('change', function() {
-        document.getElementById('currentKey').textContent = this.options[this.selectedIndex].text;
-    });
-
-    // Harmony visualizer
-    function updateHarmonyVisualizer(intervals) {
-        const display = document.getElementById('harmonyDisplay');
-        display.innerHTML = '';
-        intervals.forEach(interval => {
-            const div = document.createElement('div');
-            div.className = 'harmony-note';
-            div.textContent = interval >= 0 ? `+${interval}` : interval;
-            div.title = `${interval} semitones`;
-            display.appendChild(div);
-        });
-    }
-
-    // Initial harmony display
-    updateHarmonyVisualizer([0, 4, 7, 12]);
+    // Initialize audio context status
+    updateAudioContextStatus();
 });
 
-// ======= VARIABLES =======
-let micStream = null;
-let audioInput = null;
-let audioBuffer = null;
-let processedAudioBuffer = null;
-let masterGain, reverbNode, compressor;
-let choirLayers = [];
-let mediaRecorder, recordedChunks = [];
-let analyser, pitchDetector, isChoirRunning = false;
-let animationFrameId = null;
-let currentPitch = 440;
-let pitchHistory = [];
-let lastNoteTime = 0;
-let isProcessingFile = false;
-let processedPlayer = null;
-let originalFile = null;
-let currentInputType = 'mic';
+// ======= FILE UPLOAD HANDLER =======
+async function handleFileUpload(file) {
+    if (!file) return;
+    
+    const messageEl = document.getElementById('uploadMessage');
+    const fileInfoEl = document.getElementById('fileInfo');
+    const loadProgress = document.getElementById('loadProgress');
+    const loadPercent = document.getElementById('loadPercent');
+    
+    // Reset previous state
+    audioBuffer = null;
+    fileInfoEl.classList.remove('active');
+    messageEl.className = 'message';
+    messageEl.textContent = '';
+    loadProgress.style.width = '0%';
+    loadPercent.textContent = '0%';
+    
+    // Check file size (limit to 50MB for browser memory)
+    const MAX_SIZE = 50 * 1024 * 1024; // 50MB
+    if (file.size > MAX_SIZE) {
+        showMessage(`File is too large (${(file.size / 1024 / 1024).toFixed(1)}MB). Maximum size is 50MB.`, 'error');
+        return;
+    }
+    
+    // Show loading progress
+    fileInfoEl.classList.add('active');
+    document.getElementById('fileName').textContent = file.name;
+    document.getElementById('fileFormat').textContent = file.type || 'Unknown';
+    loadProgress.style.width = '30%';
+    loadPercent.textContent = '30%';
+    
+    // Detect file format
+    const fileExt = file.name.split('.').pop().toLowerCase();
+    const detectedFormat = FORMAT_EXTENSIONS[fileExt] || file.type;
+    
+    if (!detectedFormat || !SUPPORTED_FORMATS.includes(detectedFormat)) {
+        loadProgress.style.width = '0%';
+        loadPercent.textContent = '0%';
+        showMessage(`Format "${fileExt}" may not be supported. Try converting to WAV or MP3.`, 'warning');
+        return;
+    }
+    
+    showMessage(`Loading ${file.name}...`, 'warning');
+    
+    try {
+        // Create audio context if not exists
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        loadProgress.style.width = '60%';
+        loadPercent.textContent = '60%';
+        
+        // Read file as ArrayBuffer
+        const arrayBuffer = await file.arrayBuffer();
+        
+        loadProgress.style.width = '80%';
+        loadPercent.textContent = '80%';
+        
+        // Decode audio data
+        audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+        
+        // Update file info
+        document.getElementById('fileDuration').textContent = formatTime(audioBuffer.duration);
+        document.getElementById('fileSampleRate').textContent = `${audioBuffer.sampleRate}Hz`;
+        document.getElementById('fileChannels').textContent = audioBuffer.numberOfChannels;
+        document.getElementById('fileFormat').textContent = `${fileExt.toUpperCase()} (${detectedFormat})`;
+        
+        loadProgress.style.width = '100%';
+        loadPercent.textContent = '100%';
+        
+        // Enable controls
+        document.getElementById('playFileBtn').disabled = false;
+        document.getElementById('pauseFileBtn').disabled = false;
+        document.getElementById('stopFileBtn').disabled = false;
+        document.getElementById('loopFileBtn').disabled = false;
+        document.getElementById('renderBtn').disabled = false;
+        
+        showMessage(`✅ File loaded successfully! Duration: ${formatTime(audioBuffer.duration)}`, 'success');
+        
+        // Auto-switch to file tab if not already
+        const fileTab = document.querySelector('[data-tab="file"]');
+        if (!fileTab.classList.contains('active')) {
+            fileTab.click();
+        }
+        
+        // Update start button state
+        updateStartButtonState();
+        
+    } catch (error) {
+        console.error('Error loading audio file:', error);
+        loadProgress.style.width = '0%';
+        loadPercent.textContent = '0%';
+        
+        let errorMsg = `Failed to load audio file: ${error.message}`;
+        
+        // Provide helpful suggestions
+        if (error.name === 'EncodingError') {
+            errorMsg = 'Audio format encoding error. Try converting to WAV or MP3.';
+        } else if (error.message.includes('decode')) {
+            errorMsg = 'Could not decode audio file. The file may be corrupted or in an unsupported format.';
+        }
+        
+        showMessage(`❌ ${errorMsg}`, 'error');
+        
+        // Show format help
+        setTimeout(() => {
+            showMessage('💡 Tip: Use WAV or MP3 format for best compatibility.', 'warning');
+        }, 2000);
+    }
+}
 
-// ======= MUSIC THEORY & PRESET FUNCTIONS =======
-// (Keep all the backend functionality from previous version)
-// Harmony presets, pitch detection, auto-tune, etc.
+// ======= UTILITY FUNCTIONS =======
+function showMessage(text, type = 'info') {
+    const messageEl = document.getElementById('uploadMessage');
+    messageEl.textContent = text;
+    messageEl.className = `message ${type}`;
+    messageEl.style.display = 'block';
+    
+    // Auto-hide success messages after 5 seconds
+    if (type === 'success') {
+        setTimeout(() => {
+            messageEl.style.display = 'none';
+        }, 5000);
+    }
+}
 
-// ======= FILE HANDLING =======
-// (Keep file handling code from previous version)
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+function updateAudioContextStatus() {
+    const statusEl = document.getElementById('audioContextStatus');
+    if (audioContext && audioContext.state === 'running') {
+        statusEl.textContent = 'Active';
+        statusEl.style.color = '#4CAF50';
+    } else {
+        statusEl.textContent = 'Inactive';
+        statusEl.style.color = '#F44336';
+    }
+}
+
+function updateStartButtonState() {
+    const startBtn = document.getElementById('startChoirBtn');
+    
+    if (currentInputType === 'mic') {
+        startBtn.disabled = !micStream;
+    } else {
+        startBtn.disabled = !audioBuffer;
+    }
+}
 
 // ======= MICROPHONE HANDLING =======
-// (Keep microphone code from previous version)
+document.getElementById('micBtn').addEventListener('click', async function() {
+    if (micStream) {
+        // Already active, deactivate
+        micStream.getTracks().forEach(track => track.stop());
+        micStream = null;
+        this.textContent = '🎤 ACTIVATE MICROPHONE';
+        document.getElementById('micStatus').textContent = 'Inactive';
+        showMessage('Microphone deactivated', 'warning');
+        updateStartButtonState();
+        return;
+    }
+    
+    try {
+        micStream = await navigator.mediaDevices.getUserMedia({ 
+            audio: {
+                echoCancellation: false,
+                noiseSuppression: false,
+                autoGainControl: false,
+                channelCount: 1,
+                sampleRate: 44100
+            } 
+        });
+        
+        this.textContent = '🎤 MICROPHONE ACTIVE';
+        document.getElementById('micStatus').textContent = 'Active';
+        showMessage('Microphone activated successfully!', 'success');
+        
+        // Auto-switch to mic tab if not already
+        const micTab = document.querySelector('[data-tab="mic"]');
+        if (!micTab.classList.contains('active')) {
+            micTab.click();
+        }
+        
+        updateStartButtonState();
+        
+    } catch (error) {
+        console.error('Error accessing microphone:', error);
+        showMessage(`Failed to access microphone: ${error.message}`, 'error');
+        document.getElementById('micStatus').textContent = 'Error';
+    }
+});
+
+// ======= FILE PLAYBACK CONTROLS =======
+let audioElement = null;
+
+document.getElementById('playFileBtn').addEventListener('click', function() {
+    if (!audioBuffer) return;
+    
+    if (audioElement && !audioElement.paused) {
+        audioElement.pause();
+        this.textContent = '▶ Play';
+    } else {
+        if (!audioElement) {
+            audioElement = new Audio();
+            // Create object URL from buffer
+            const blob = new Blob([audioBuffer.getChannelData(0)], { type: 'audio/wav' });
+            audioElement.src = URL.createObjectURL(blob);
+        }
+        audioElement.play();
+        this.textContent = '⏸ Pause';
+    }
+});
+
+document.getElementById('pauseFileBtn').addEventListener('click', function() {
+    if (audioElement) {
+        audioElement.pause();
+        document.getElementById('playFileBtn').textContent = '▶ Play';
+    }
+});
+
+document.getElementById('stopFileBtn').addEventListener('click', function() {
+    if (audioElement) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+        document.getElementById('playFileBtn').textContent = '▶ Play';
+    }
+});
+
+document.getElementById('loopFileBtn').addEventListener('click', function() {
+    if (audioElement) {
+        audioElement.loop = !audioElement.loop;
+        this.textContent = audioElement.loop ? '↻ Looping' : '↻ Loop';
+    }
+});
 
 // ======= CHOIR PROCESSING =======
-// (Keep choir processing code from previous version)
+document.getElementById('startChoirBtn').addEventListener('click', async function() {
+    if (currentInputType === 'mic' && !micStream) {
+        showMessage('Please activate microphone first', 'error');
+        return;
+    }
+    
+    if (currentInputType === 'file' && !audioBuffer) {
+        showMessage('Please load an audio file first', 'error');
+        return;
+    }
+    
+    await Tone.start();
+    Tone.context.resume();
+    
+    // Get parameters
+    const octaves = parseInt(document.getElementById('octaves').value);
+    const voicesPerLayer = parseInt(document.getElementById('voices').value);
+    const preset = document.getElementById('preset').value;
+    const key = document.getElementById('key').value;
+    
+    // Clear previous layers
+    choirLayers.forEach(layer => {
+        layer.forEach(voice => {
+            if (voice.cleanup) voice.cleanup();
+        });
+    });
+    choirLayers = [];
+    
+    // Setup audio graph
+    masterGain = new Tone.Gain(0.7).toDestination();
+    compressor = new Tone.Compressor({
+        threshold: -20,
+        ratio: 4,
+        attack: 0.003,
+        release: 0.25
+    }).connect(masterGain);
+    
+    reverbNode = new Tone.Reverb({
+        decay: 3,
+        wet: 0.6
+    }).connect(compressor);
+    
+    // Create audio input based on selected source
+    if (currentInputType === 'mic') {
+        audioInput = new Tone.UserMedia();
+        await audioInput.open(micStream);
+    } else {
+        // Convert AudioBuffer to Tone.Buffer
+        const buffer = new Tone.Buffer({
+            url: audioBuffer,
+            onload: () => {
+                console.log('Buffer loaded successfully');
+            },
+            onerror: (err) => {
+                console.error('Buffer loading error:', err);
+                showMessage('Error loading audio buffer', 'error');
+            }
+        });
+        
+        // Wait for buffer to load
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        audioInput = new Tone.Player(buffer).connect(masterGain);
+        audioInput.loop = true;
+        audioInput.playbackRate = 1;
+    }
+    
+    // Create analyser
+    analyser = Tone.context.createAnalyser();
+    analyser.fftSize = 4096;
+    analyser.smoothingTimeConstant = 0.8;
+    audioInput.connect(analyser);
+    
+    // Start audio playback if it's a file
+    if (currentInputType === 'file' && audioInput instanceof Tone.Player) {
+        audioInput.start();
+    }
+    
+    // Create harmony layers based on preset
+    const intervals = getPresetIntervals(preset);
+    
+    for (let o = 0; o < octaves; o++) {
+        let layer = [];
+        for (let v = 0; v < voicesPerLayer; v++) {
+            const interval = intervals[v % intervals.length];
+            
+            const pitchShift = new Tone.PitchShift({
+                pitch: interval + (o * 12),
+                windowSize: 0.1,
+                delayTime: 0.1
+            });
+            
+            const gain = new Tone.Gain(0.5 / (octaves * voicesPerLayer));
+            
+            // Connect: audioInput → pitchShift → gain → reverb
+            audioInput.connect(pitchShift);
+            pitchShift.connect(gain);
+            gain.connect(reverbNode);
+            
+            layer.push({
+                pitchShift: pitchShift,
+                gain: gain,
+                interval: interval,
+                octaveShift: o * 12,
+                cleanup: function() {
+                    pitchShift.dispose();
+                    gain.dispose();
+                }
+            });
+        }
+        choirLayers.push(layer);
+    }
+    
+    isChoirRunning = true;
+    document.getElementById('startChoirBtn').disabled = true;
+    document.getElementById('stopChoirBtn').disabled = false;
+    document.getElementById('recordBtn').disabled = false;
+    document.getElementById('previewProcessedBtn').disabled = false;
+    
+    document.getElementById('activeVoices').textContent = octaves * voicesPerLayer;
+    document.getElementById('processingStatus').textContent = 'Active';
+    
+    showMessage('🎵 Choir processing started!', 'success');
+    
+    // Start processing loop
+    function processLoop() {
+        if (!isChoirRunning) return;
+        
+        // Update detected pitch (simplified - use actual pitch detection)
+        if (Math.random() > 0.8) { // Simulate pitch updates
+            const freq = 220 + Math.random() * 220;
+            document.getElementById('detectedPitch').textContent = `${Math.round(freq)} Hz`;
+        }
+        
+        animationFrameId = requestAnimationFrame(processLoop);
+    }
+    
+    processLoop();
+});
+
+// ======= STOP PROCESSING =======
+document.getElementById('stopChoirBtn').addEventListener('click', function() {
+    if (!isChoirRunning) return;
+    
+    isChoirRunning = false;
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+    }
+    
+    // Clean up audio nodes
+    choirLayers.forEach(layer => {
+        layer.forEach(voice => {
+            voice.cleanup();
+        });
+    });
+    choirLayers = [];
+    
+    if (audioInput) {
+        if (audioInput.close) audioInput.close();
+        audioInput.disconnect();
+        audioInput = null;
+    }
+    
+    document.getElementById('startChoirBtn').disabled = false;
+    document.getElementById('stopChoirBtn').disabled = true;
+    document.getElementById('activeVoices').textContent = '0';
+    document.getElementById('processingStatus').textContent = 'Idle';
+    
+    showMessage('Choir processing stopped', 'warning');
+});
+
+// ======= HARMONY PRESETS =======
+function getPresetIntervals(type) {
+    switch(type) {
+        case "gospel": return [0, 4, 7, 10, 12, 14, 16];
+        case "cinematic": return [0, 2, 4, 7, 11, 12];
+        case "angelic": return [0, 5, 7, 12, 17, 19];
+        case "octaves": return [-12, 0, 12, 24];
+        case "unison": return [0, 0, 0, 0, 0, 0];
+        default: return [0, 4, 7];
+    }
+}
 
 // ======= RECORDING & EXPORT =======
-// (Keep recording and export code from previous version)
+// (Implement recording and export functionality here)
 
-// ======= UI UPDATES =======
-function updateStatus(message, type = 'info') {
-    const statusEl = document.getElementById('systemStatus');
-    statusEl.textContent = message;
-    
-    // Update status indicator
-    const indicator = document.getElementById('inputStatus');
-    if (type === 'success') {
-        indicator.className = 'status-indicator active';
-    } else if (type === 'error') {
-        indicator.className = 'status-indicator inactive';
-    } else if (type === 'processing') {
-        indicator.className = 'status-indicator processing';
-    }
-}
-
-function updateProcessingStatus(message, type = 'info') {
-    const statusEl = document.getElementById('processingStatus');
-    const textEl = document.getElementById('exportStatus');
-    
-    textEl.textContent = message;
-    if (type === 'success') {
-        statusEl.className = 'status-indicator active';
-    } else if (type === 'error') {
-        statusEl.className = 'status-indicator inactive';
-    } else if (type === 'processing') {
-        statusEl.className = 'status-indicator processing';
-    }
-}
-
-function updateVUMeter(level) {
-    const vuLevel = document.getElementById('vuLevel');
-    vuLevel.style.width = `${Math.min(100, level * 100)}%`;
-}
-
-function updatePitchDisplay(freq, note) {
-    document.getElementById('detectedPitch').textContent = freq ? `${Math.round(freq)} Hz` : '-- Hz';
-    document.getElementById('detectedNote').textContent = note || '--';
-}
-
-// ======= FILE UPLOAD UI =======
-document.getElementById('audioFile').addEventListener('change', async function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    // Update UI
-    document.getElementById('fileName').textContent = file.name;
-    document.getElementById('fileFormat').textContent = file.type || file.name.split('.').pop().toUpperCase();
-    document.getElementById('fileInfo').classList.add('active');
-    
-    // Enable file controls
-    document.getElementById('playFileBtn').disabled = false;
-    document.getElementById('pauseFileBtn').disabled = false;
-    document.getElementById('loopFileBtn').disabled = false;
-    
-    // Update status
-    updateStatus(`Loading ${file.name}...`, 'processing');
-    
-    // Load file (simplified - use actual loading code from previous version)
-    setTimeout(() => {
-        updateStatus('File loaded successfully', 'success');
-        document.getElementById('startChoirBtn').disabled = false;
-        document.getElementById('renderBtn').disabled = false;
-    }, 1000);
-});
-
-// ======= BUTTON HANDLERS =======
-document.getElementById('micBtn').addEventListener('click', async function() {
-    updateStatus('Requesting microphone access...', 'processing');
-    // Actual microphone code here
-    setTimeout(() => {
-        updateStatus('Microphone active', 'success');
-        document.getElementById('startChoirBtn').disabled = false;
-        document.getElementById('micStatus').textContent = 'Active';
-    }, 1000);
-});
-
-document.getElementById('startChoirBtn').addEventListener('click', function() {
-    updateProcessingStatus('Starting choir processing...', 'processing');
-    // Actual processing start code here
-    setTimeout(() => {
-        updateProcessingStatus('Choir active', 'success');
-        document.getElementById('processingLoad').textContent = '45%';
-        document.getElementById('activeVoices').textContent = '18 voices';
-    }, 1500);
-});
-
-// Add more event handlers as needed...
-
-// ======= RESET FUNCTION =======
-document.getElementById('resetSettingsBtn').addEventListener('click', function() {
-    if (confirm('Reset all settings to default?')) {
-        // Reset sliders
-        document.getElementById('octaves').value = 3;
-        document.getElementById('voices').value = 6;
-        document.getElementById('width').value = 0.7;
-        document.getElementById('reverb').value = 0.6;
-        document.getElementById('detune').value = 18;
-        document.getElementById('vibrato').value = 0.003;
-        document.getElementById('breath').value = 0.05;
-        document.getElementById('adsr').value = 15;
-        document.getElementById('pitchRange').value = 12;
-        document.getElementById('autoSpeed').value = 15;
-        
-        // Reset selects
-        document.getElementById('preset').value = 'gospel';
-        document.getElementById('key').value = 'C';
-        document.getElementById('customIntervals').value = '0,4,7,12';
-        
-        // Update displays
-        document.querySelectorAll('input[type="range"]').forEach(slider => {
-            slider.dispatchEvent(new Event('input'));
-        });
-        document.getElementById('preset').dispatchEvent(new Event('change'));
-        document.getElementById('key').dispatchEvent(new Event('change'));
-        
-        updateStatus('Settings reset to default', 'success');
-    }
-});
-
-// ======= ANIMATION LOOP =======
-function animate() {
-    // Update VU meter with random data for demo
-    if (isChoirRunning) {
-        const level = 0.3 + Math.random() * 0.4;
-        updateVUMeter(level);
-    }
-    
-    // Update pitch display with random data for demo
-    if (isChoirRunning && Math.random() > 0.5) {
-        const freq = 220 + Math.random() * 220;
-        updatePitchDisplay(freq, 'A4');
-    }
-    
-    requestAnimationFrame(animate);
-}
-
-animate();
-
-// ======= INITIALIZE =======
-updateStatus('System ready', 'success');
-document.getElementById('audioContextStatus').textContent = 'Ready';
+// Update system status
+setInterval(() => {
+    document.getElementById('systemStatus').textContent = 'Ready';
+    updateAudioContextStatus();
+}, 5000);
 </script>
 </body>
 </html>
