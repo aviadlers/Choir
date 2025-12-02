@@ -3,24 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CINEMATIC CHOIR ORCHESTRA v11</title>
+<title>Audio Upload Test</title>
 <style>
-:root {
-    --primary: #C47E2C;
-    --primary-dark: #9C5E1C;
-    --secondary: #2a5c8c;
-    --secondary-dark: #1a4c7c;
-    --bg-dark: #0a0a0a;
-    --bg-panel: #1a1a1a;
-    --bg-elevated: #2a2a2a;
-    --text: #ffffff;
-    --text-muted: #aaaaaa;
-    --success: #4CAF50;
-    --warning: #FF9800;
-    --danger: #F44336;
-    --border: #333333;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -28,124 +12,82 @@
 }
 
 body {
-    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
-    color: var(--text);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    min-height: 100vh;
+    background: #0a0a0a;
+    color: white;
+    font-family: Arial, sans-serif;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(196, 126, 44, 0.3);
+    border: 2px solid #C47E2C;
 }
 
-.header {
+h1 {
+    color: #C47E2C;
     text-align: center;
     margin-bottom: 30px;
-    padding: 20px;
-}
-
-.header h1 {
-    font-size: 2.5rem;
-    background: linear-gradient(135deg, var(--primary), #e6b851);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-}
-
-.panel {
-    background: var(--bg-panel);
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 25px;
-    border: 1px solid rgba(196, 126, 44, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.panel h2 {
-    color: var(--primary);
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-}
-
-.tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
-}
-
-.tab {
-    padding: 10px 20px;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.3s;
-}
-
-.tab:hover {
-    background: rgba(196, 126, 44, 0.1);
-}
-
-.tab.active {
-    background: var(--primary);
-    color: white;
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
+    font-size: 2rem;
 }
 
 .upload-area {
-    border: 3px dashed var(--border);
+    border: 3px dashed #C47E2C;
     border-radius: 10px;
-    padding: 40px;
+    padding: 50px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s;
     margin-bottom: 20px;
-}
-
-.upload-area:hover {
-    border-color: var(--primary);
+    transition: all 0.3s;
     background: rgba(196, 126, 44, 0.05);
 }
 
-.upload-area i {
+.upload-area:hover {
+    background: rgba(196, 126, 44, 0.1);
+}
+
+.upload-area.dragover {
+    background: rgba(196, 126, 44, 0.2);
+    border-color: #e6b851;
+}
+
+.upload-icon {
     font-size: 48px;
     margin-bottom: 15px;
-    color: var(--primary);
+    color: #C47E2C;
 }
 
 .upload-area h3 {
     margin-bottom: 10px;
-    color: var(--text);
+    color: white;
 }
 
 .upload-area p {
-    color: var(--text-muted);
-    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 14px;
 }
 
 .file-info {
-    background: var(--bg-elevated);
+    background: #2a2a2a;
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
+    display: none;
+}
+
+.file-info.show {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .info-row {
@@ -153,7 +95,7 @@ body {
     justify-content: space-between;
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #333;
 }
 
 .info-row:last-child {
@@ -162,12 +104,28 @@ body {
 }
 
 .info-label {
-    color: var(--text-muted);
+    color: #aaa;
 }
 
 .info-value {
-    color: var(--text);
+    color: white;
     font-weight: bold;
+}
+
+.audio-preview {
+    margin-top: 20px;
+}
+
+.audio-preview audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -175,17 +133,15 @@ body {
     border: none;
     border-radius: 8px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    flex: 1;
+    min-width: 120px;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, #C47E2C, #9C5E1C);
     color: white;
 }
 
@@ -194,68 +150,14 @@ body {
     box-shadow: 0 5px 15px rgba(196, 126, 44, 0.4);
 }
 
-.btn-secondary {
-    background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
-    color: white;
-}
-
-.btn-success {
-    background: linear-gradient(135deg, var(--success), #388E3C);
-    color: white;
-}
-
-.btn:disabled {
+.btn-primary:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    transform: none !important;
 }
 
-.controls {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.status {
-    background: var(--bg-elevated);
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 20px;
-}
-
-.status-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.status-label {
-    color: var(--text-muted);
-}
-
-.status-value {
-    color: var(--text);
-    font-weight: bold;
-}
-
-.progress {
-    margin-top: 20px;
-}
-
-.progress-bar {
-    height: 6px;
-    background: var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 5px;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--secondary), var(--primary));
-    width: 0%;
-    transition: width 0.3s;
+.btn-secondary {
+    background: linear-gradient(135deg, #2a5c8c, #1a4c7c);
+    color: white;
 }
 
 .message {
@@ -267,77 +169,66 @@ body {
 
 .message.success {
     background: rgba(76, 175, 80, 0.1);
-    border-left: 4px solid var(--success);
-    color: var(--success);
+    border-left: 4px solid #4CAF50;
+    color: #4CAF50;
     display: block;
 }
 
 .message.error {
     background: rgba(244, 67, 54, 0.1);
-    border-left: 4px solid var(--danger);
-    color: var(--danger);
+    border-left: 4px solid #F44336;
+    color: #F44336;
     display: block;
 }
 
 .message.warning {
     background: rgba(255, 152, 0, 0.1);
-    border-left: 4px solid var(--warning);
-    color: var(--warning);
+    border-left: 4px solid #FF9800;
+    color: #FF9800;
     display: block;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
+#fileInput {
+    display: none;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--text-muted);
-}
-
-.slider-container {
+.supported-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
     margin-top: 10px;
 }
 
-input[type="range"] {
-    width: 100%;
-    height: 6px;
-    background: var(--border);
-    border-radius: 3px;
-    outline: none;
-    -webkit-appearance: none;
+.format-badge {
+    background: rgba(42, 92, 140, 0.2);
+    color: #aaa;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    border: 1px solid rgba(42, 92, 140, 0.3);
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--primary);
-    cursor: pointer;
-    border: 3px solid var(--bg-dark);
+.format-badge.primary {
+    background: rgba(196, 126, 44, 0.2);
+    border-color: rgba(196, 126, 44, 0.3);
+    color: #C47E2C;
 }
 
-select, input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-size: 14px;
+.status {
+    text-align: center;
+    margin-top: 20px;
+    color: #4CAF50;
+    font-weight: bold;
 }
 
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .upload-area {
+        padding: 30px;
     }
     
     .controls {
@@ -352,675 +243,306 @@ select, input[type="text"] {
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <h1>🎵 CINEMATIC CHOIR ORCHESTRA v11</h1>
-        <p class="subtitle">Transform vocals into epic cinematic harmonies</p>
+    <h1>🎵 Audio Upload Test</h1>
+    
+    <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📁</div>
+        <h3>Click here or drag & drop any audio file</h3>
+        <p>Maximum file size: 50MB</p>
+        
+        <div class="supported-formats">
+            <span class="format-badge primary">MP3</span>
+            <span class="format-badge primary">WAV</span>
+            <span class="format-badge">M4A</span>
+            <span class="format-badge">OGG</span>
+            <span class="format-badge">FLAC</span>
+            <span class="format-badge">AAC</span>
+            <span class="format-badge">AIFF</span>
+        </div>
+        
+        <input type="file" id="fileInput" accept="audio/*">
     </div>
-
-    <div class="grid">
-        <!-- INPUT SECTION -->
-        <div class="panel">
-            <h2>🎤 INPUT SOURCE</h2>
-            
-            <div class="tabs">
-                <button class="tab active" data-tab="mic">Microphone</button>
-                <button class="tab" data-tab="file">Audio File</button>
-            </div>
-            
-            <!-- Microphone Tab -->
-            <div class="tab-content active" id="micTab">
-                <p style="margin-bottom: 20px; color: var(--text-muted);">
-                    Use your microphone for real-time processing
-                </p>
-                <button class="btn btn-primary" id="micBtn" style="width: 100%; padding: 15px;">
-                    🎤 ACTIVATE MICROPHONE
-                </button>
-                <div class="status">
-                    <div class="status-row">
-                        <span class="status-label">Microphone Status:</span>
-                        <span class="status-value" id="micStatus">Inactive</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- File Upload Tab -->
-            <div class="tab-content" id="fileTab">
-                <p style="margin-bottom: 20px; color: var(--text-muted);">
-                    Upload any audio file (WAV, MP3, M4A, OGG, FLAC, etc.)
-                </p>
-                
-                <div class="upload-area" id="uploadArea">
-                    <i>📁</i>
-                    <h3>Drop audio file here or click to browse</h3>
-                    <p>Supports: WAV, MP3, M4A, OGG, FLAC, AAC, AIFF</p>
-                    <input type="file" id="audioFile" accept="audio/*" style="display: none;">
-                </div>
-                
-                <div class="message" id="uploadMessage"></div>
-                
-                <div class="file-info" id="fileInfo" style="display: none;">
-                    <div class="info-row">
-                        <span class="info-label">File:</span>
-                        <span class="info-value" id="fileName">-</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Duration:</span>
-                        <span class="info-value" id="fileDuration">-</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Format:</span>
-                        <span class="info-value" id="fileFormat">-</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Size:</span>
-                        <span class="info-value" id="fileSize">-</span>
-                    </div>
-                    <div class="progress">
-                        <div class="info-row">
-                            <span class="info-label">Loading:</span>
-                            <span class="info-value" id="loadPercent">0%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="loadProgress"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="controls">
-                    <button class="btn btn-secondary" id="playFileBtn" disabled>▶ Play</button>
-                    <button class="btn btn-secondary" id="pauseFileBtn" disabled>⏸ Pause</button>
-                    <button class="btn btn-secondary" id="stopFileBtn" disabled>⏹ Stop</button>
-                    <button class="btn btn-secondary" id="loopFileBtn" disabled>↻ Loop</button>
-                </div>
-            </div>
-            
-            <div class="status" style="margin-top: 25px;">
-                <div class="status-row">
-                    <span class="status-label">System Status:</span>
-                    <span class="status-value" id="systemStatus">Ready</span>
-                </div>
-            </div>
+    
+    <div class="message" id="message"></div>
+    
+    <div class="file-info" id="fileInfo">
+        <div class="info-row">
+            <span class="info-label">File Name:</span>
+            <span class="info-value" id="fileName">-</span>
         </div>
-
-        <!-- SETTINGS SECTION -->
-        <div class="panel">
-            <h2>🎹 CHOIR SETTINGS</h2>
-            
-            <div class="form-group">
-                <label class="form-label">
-                    <span>Octave Layers: <strong id="octavesText">3</strong></span>
-                </label>
-                <div class="slider-container">
-                    <input type="range" id="octaves" min="1" max="6" value="3" step="1">
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">
-                    <span>Voices per Layer: <strong id="voicesText">6</strong></span>
-                </label>
-                <div class="slider-container">
-                    <input type="range" id="voices" min="2" max="12" value="6" step="1">
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Harmony Preset</label>
-                <select id="preset" class="form-control">
-                    <option value="gospel">Gospel Choir (7th chords)</option>
-                    <option value="cinematic">Cinematic (suspensions)</option>
-                    <option value="angelic">Angelic Air (4ths & 5ths)</option>
-                    <option value="octaves">Octave Stack</option>
-                    <option value="unison">Wide Unison</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Key (Auto-Tune)</label>
-                <select id="key" class="form-control">
-                    <option value="C">C Major</option>
-                    <option value="Cm">C Minor</option>
-                    <option value="D">D Major</option>
-                    <option value="Dm">D Minor</option>
-                    <option value="E">E Major</option>
-                    <option value="Em">E Minor</option>
-                    <option value="F">F Major</option>
-                    <option value="Fm">F Minor</option>
-                    <option value="G">G Major</option>
-                    <option value="Gm">G Minor</option>
-                    <option value="A">A Major</option>
-                    <option value="Am">A Minor</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Custom Intervals (semitones, comma separated)</label>
-                <input type="text" id="customIntervals" value="0,4,7,12" placeholder="0,4,7,12">
-            </div>
+        <div class="info-row">
+            <span class="info-label">File Size:</span>
+            <span class="info-value" id="fileSize">-</span>
         </div>
-
-        <!-- PROCESSING SECTION -->
-        <div class="panel">
-            <h2>⚡ PROCESSING</h2>
-            
-            <div class="controls">
-                <button class="btn btn-primary" id="startChoirBtn" disabled style="flex: 1;">
-                    🎵 START CHOIR PROCESSING
-                </button>
-                <button class="btn btn-danger" id="stopChoirBtn" disabled>
-                    ⏹ STOP
-                </button>
-            </div>
-            
-            <div class="status" style="margin-top: 20px;">
-                <div class="status-row">
-                    <span class="status-label">Active Voices:</span>
-                    <span class="status-value" id="activeVoices">0</span>
-                </div>
-                <div class="status-row">
-                    <span class="status-label">Processing Status:</span>
-                    <span class="status-value" id="processingStatus">Idle</span>
-                </div>
-                <div class="status-row">
-                    <span class="status-label">CPU Load:</span>
-                    <span class="status-value" id="cpuLoad">0%</span>
-                </div>
-            </div>
-            
-            <h3 style="margin-top: 25px; color: var(--primary);">💾 EXPORT</h3>
-            
-            <div class="controls" style="margin-top: 15px;">
-                <button class="btn btn-secondary" id="recordBtn" disabled>⏺ Record Live</button>
-                <button class="btn btn-secondary" id="renderBtn" disabled>⚡ Render File</button>
-                <button class="btn btn-success" id="previewBtn" disabled>🎧 Preview</button>
-                <button class="btn btn-primary" id="downloadBtn" disabled>⬇ Download</button>
-            </div>
-            
-            <div class="progress" id="renderProgress" style="display: none; margin-top: 20px;">
-                <div class="info-row">
-                    <span class="info-label">Rendering:</span>
-                    <span class="info-value" id="renderPercent">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="renderFill"></div>
-                </div>
-            </div>
-            
-            <div class="message" id="exportMessage"></div>
+        <div class="info-row">
+            <span class="info-label">Duration:</span>
+            <span class="info-value" id="fileDuration">-</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Format:</span>
+            <span class="info-value" id="fileFormat">-</span>
         </div>
     </div>
+    
+    <div class="audio-preview" id="audioPreview" style="display: none;">
+        <h4>Audio Preview:</h4>
+        <audio id="audioPlayer" controls></audio>
+    </div>
+    
+    <div class="controls">
+        <button class="btn btn-primary" id="playBtn" disabled>▶ Play</button>
+        <button class="btn btn-secondary" id="pauseBtn" disabled>⏸ Pause</button>
+        <button class="btn btn-secondary" id="stopBtn" disabled>⏹ Stop</button>
+        <button class="btn btn-secondary" id="loopBtn" disabled>↻ Loop</button>
+        <button class="btn btn-primary" id="testBtn" disabled>🎵 Test Audio</button>
+    </div>
+    
+    <div class="status" id="status">Ready to upload audio...</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
 <script>
-// ======= VARIABLES =======
-let micStream = null;
-let audioInput = null;
-let audioBuffer = null;
-let processedAudioBuffer = null;
-let masterGain, reverbNode;
-let choirLayers = [];
-let mediaRecorder, recordedChunks = [];
-let analyser;
-let isChoirRunning = false;
-let animationFrameId = null;
-let currentInputType = 'mic';
-let audioElement = null;
-let isFileLooping = false;
+// ======= SIMPLE AUDIO UPLOAD =======
+let currentAudio = null;
+let audioUrl = null;
+let isLooping = false;
 
-// ======= UI INITIALIZATION =======
-document.addEventListener('DOMContentLoaded', function() {
-    // Tab switching
-    document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', function() {
-            const tabId = this.dataset.tab;
-            
-            // Update active tab
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Show corresponding content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabId + 'Tab').classList.add('active');
-            
-            // Update current input type
-            currentInputType = tabId;
-            
-            // Update button state
-            updateStartButtonState();
-        });
-    });
+// Get DOM elements
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const fileInfo = document.getElementById('fileInfo');
+const audioPreview = document.getElementById('audioPreview');
+const audioPlayer = document.getElementById('audioPlayer');
+const messageEl = document.getElementById('message');
+const statusEl = document.getElementById('status');
 
-    // File upload area click
-    document.getElementById('uploadArea').addEventListener('click', function() {
-        document.getElementById('audioFile').click();
-    });
+// Button elements
+const playBtn = document.getElementById('playBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const stopBtn = document.getElementById('stopBtn');
+const loopBtn = document.getElementById('loopBtn');
+const testBtn = document.getElementById('testBtn');
 
-    // File input change
-    document.getElementById('audioFile').addEventListener('change', function(e) {
-        if (e.target.files.length > 0) {
-            handleFileUpload(e.target.files[0]);
-        }
-    });
+// File info elements
+const fileNameEl = document.getElementById('fileName');
+const fileSizeEl = document.getElementById('fileSize');
+const fileDurationEl = document.getElementById('fileDuration');
+const fileFormatEl = document.getElementById('fileFormat');
 
-    // Drag and drop
-    const uploadArea = document.getElementById('uploadArea');
-    uploadArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        this.style.borderColor = '#C47E2C';
-        this.style.background = 'rgba(196, 126, 44, 0.05)';
-    });
-
-    uploadArea.addEventListener('dragleave', function(e) {
-        e.preventDefault();
-        this.style.borderColor = '#333';
-        this.style.background = 'transparent';
-    });
-
-    uploadArea.addEventListener('drop', function(e) {
-        e.preventDefault();
-        this.style.borderColor = '#333';
-        this.style.background = 'transparent';
-        
-        if (e.dataTransfer.files.length > 0) {
-            const file = e.dataTransfer.files[0];
-            if (file.type.startsWith('audio/')) {
-                handleFileUpload(file);
-            } else {
-                showMessage('Please drop an audio file', 'error');
-            }
-        }
-    });
-
-    // Bind slider updates
-    document.getElementById('octaves').addEventListener('input', function() {
-        document.getElementById('octavesText').textContent = this.value;
-    });
-
-    document.getElementById('voices').addEventListener('input', function() {
-        document.getElementById('voicesText').textContent = this.value;
-    });
-
-    // File playback controls
-    document.getElementById('playFileBtn').addEventListener('click', togglePlayback);
-    document.getElementById('pauseFileBtn').addEventListener('click', pausePlayback);
-    document.getElementById('stopFileBtn').addEventListener('click', stopPlayback);
-    document.getElementById('loopFileBtn').addEventListener('click', toggleLoop);
-
-    // Initialize
-    updateStartButtonState();
+// ======= EVENT LISTENERS =======
+// Click upload area
+uploadArea.addEventListener('click', () => {
+    console.log('Upload area clicked');
+    fileInput.click();
 });
+
+// File input change
+fileInput.addEventListener('change', (e) => {
+    console.log('File input changed');
+    if (e.target.files.length > 0) {
+        handleFileUpload(e.target.files[0]);
+    }
+});
+
+// Drag and drop events
+uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+});
+
+uploadArea.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+});
+
+uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    
+    if (e.dataTransfer.files.length > 0) {
+        const file = e.dataTransfer.files[0];
+        if (file.type.startsWith('audio/') || file.name.match(/\.(mp3|wav|m4a|ogg|flac|aac|aiff)$/i)) {
+            console.log('File dropped:', file.name);
+            handleFileUpload(file);
+        } else {
+            showMessage('Please drop an audio file (MP3, WAV, M4A, etc.)', 'error');
+        }
+    }
+});
+
+// Play button
+playBtn.addEventListener('click', () => {
+    if (audioPlayer.src) {
+        audioPlayer.play().catch(e => {
+            showMessage('Error playing audio: ' + e.message, 'error');
+        });
+        playBtn.textContent = '▶ Playing';
+    }
+});
+
+// Pause button
+pauseBtn.addEventListener('click', () => {
+    audioPlayer.pause();
+    playBtn.textContent = '▶ Play';
+});
+
+// Stop button
+stopBtn.addEventListener('click', () => {
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
+    playBtn.textContent = '▶ Play';
+});
+
+// Loop button
+loopBtn.addEventListener('click', () => {
+    isLooping = !isLooping;
+    audioPlayer.loop = isLooping;
+    loopBtn.textContent = isLooping ? '↻ Looping' : '↻ Loop';
+    showMessage(isLooping ? 'Loop enabled' : 'Loop disabled', 'success');
+});
+
+// Test button - create test tone
+testBtn.addEventListener('click', createTestTone);
 
 // ======= FILE UPLOAD HANDLER =======
-async function handleFileUpload(file) {
-    const messageEl = document.getElementById('uploadMessage');
-    const fileInfoEl = document.getElementById('fileInfo');
-    const loadProgress = document.getElementById('loadProgress');
-    const loadPercent = document.getElementById('loadPercent');
+function handleFileUpload(file) {
+    console.log('Starting file upload:', file.name);
     
-    // Reset
-    showMessage('Loading audio file...', 'warning');
-    fileInfoEl.style.display = 'none';
-    audioBuffer = null;
+    // Clear previous
+    if (audioUrl) {
+        URL.revokeObjectURL(audioUrl);
+        audioUrl = null;
+    }
+    
+    // Reset UI
+    fileInfo.classList.remove('show');
+    audioPreview.style.display = 'none';
+    hideMessage();
+    statusEl.textContent = 'Loading file...';
     
     // Validate file
-    if (!file.type.startsWith('audio/')) {
-        showMessage('Please select an audio file', 'error');
+    if (!file.type.startsWith('audio/') && !file.name.match(/\.(mp3|wav|m4a|ogg|flac|aac|aiff|webm)$/i)) {
+        showMessage('Please select a valid audio file', 'error');
+        statusEl.textContent = 'Invalid file type';
         return;
     }
     
-    // File size check (50MB limit)
-    if (file.size > 50 * 1024 * 1024) {
-        showMessage('File too large (max 50MB)', 'error');
+    // File size check
+    const maxSize = 50 * 1024 * 1024; // 50MB
+    if (file.size > maxSize) {
+        showMessage(`File too large (${formatFileSize(file.size)}). Maximum size is 50MB.`, 'error');
+        statusEl.textContent = 'File too large';
         return;
     }
     
+    // Create Object URL
     try {
-        // Show file info
-        fileInfoEl.style.display = 'block';
-        document.getElementById('fileName').textContent = file.name;
-        document.getElementById('fileSize').textContent = formatFileSize(file.size);
-        document.getElementById('fileFormat').textContent = file.type.split('/')[1].toUpperCase();
+        audioUrl = URL.createObjectURL(file);
+        console.log('Created object URL:', audioUrl);
         
-        // Update progress
-        loadProgress.style.width = '30%';
-        loadPercent.textContent = '30%';
+        // Set audio player source
+        audioPlayer.src = audioUrl;
         
-        // Create audio context
+        // Wait for audio to load metadata
+        audioPlayer.onloadedmetadata = () => {
+            console.log('Audio metadata loaded');
+            updateFileInfo(file);
+            enableControls();
+            statusEl.textContent = 'File loaded successfully!';
+            showMessage('✅ Audio file loaded successfully!', 'success');
+        };
+        
+        audioPlayer.onerror = (e) => {
+            console.error('Audio loading error:', e);
+            showMessage('Error loading audio file. The file may be corrupted or in an unsupported format.', 'error');
+            statusEl.textContent = 'Error loading file';
+            disableControls();
+        };
+        
+        audioPlayer.load(); // Start loading the audio
+        
+    } catch (error) {
+        console.error('Error creating object URL:', error);
+        showMessage('Error processing file: ' + error.message, 'error');
+        statusEl.textContent = 'Error processing file';
+    }
+}
+
+// ======= UPDATE FILE INFO =======
+function updateFileInfo(file) {
+    fileNameEl.textContent = file.name;
+    fileSizeEl.textContent = formatFileSize(file.size);
+    
+    // Get file extension
+    const extension = file.name.split('.').pop().toUpperCase();
+    const mimeType = file.type || 'Unknown';
+    fileFormatEl.textContent = `${extension} (${mimeType})`;
+    
+    // Duration will be updated by audioPlayer.onloadedmetadata
+    audioPlayer.onloadedmetadata = () => {
+        fileDurationEl.textContent = formatTime(audioPlayer.duration);
+        fileInfo.classList.add('show');
+        audioPreview.style.display = 'block';
+        statusEl.textContent = `Loaded: ${formatTime(audioPlayer.duration)} audio`;
+    };
+}
+
+// ======= ENABLE/DISABLE CONTROLS =======
+function enableControls() {
+    playBtn.disabled = false;
+    pauseBtn.disabled = false;
+    stopBtn.disabled = false;
+    loopBtn.disabled = false;
+    testBtn.disabled = false;
+}
+
+function disableControls() {
+    playBtn.disabled = true;
+    pauseBtn.disabled = true;
+    stopBtn.disabled = true;
+    loopBtn.disabled = true;
+    testBtn.disabled = true;
+}
+
+// ======= TEST FUNCTION =======
+function createTestTone() {
+    // Create a simple test tone using Web Audio API
+    try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
         
-        // Read file
-        const arrayBuffer = await file.arrayBuffer();
-        loadProgress.style.width = '60%';
-        loadPercent.textContent = '60%';
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
         
-        // Decode audio
-        audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+        oscillator.frequency.value = 440; // A4 note
+        oscillator.type = 'sine';
         
-        // Update info
-        document.getElementById('fileDuration').textContent = formatTime(audioBuffer.duration);
-        loadProgress.style.width = '100%';
-        loadPercent.textContent = '100%';
+        gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
         
-        // Enable controls
-        document.getElementById('playFileBtn').disabled = false;
-        document.getElementById('pauseFileBtn').disabled = false;
-        document.getElementById('stopFileBtn').disabled = false;
-        document.getElementById('loopFileBtn').disabled = false;
-        document.getElementById('renderBtn').disabled = false;
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 1); // Play for 1 second
         
-        showMessage('✅ File loaded successfully! Ready for processing.', 'success');
-        
-        // Switch to file tab if not already
-        const fileTab = document.querySelector('[data-tab="file"]');
-        if (!fileTab.classList.contains('active')) {
-            fileTab.click();
-        }
-        
-        // Update start button
-        updateStartButtonState();
-        
-        // Close audio context to save resources
-        await audioContext.close();
+        showMessage('🎵 Test tone played (440Hz sine wave)', 'success');
         
     } catch (error) {
-        console.error('Error loading audio:', error);
-        showMessage(`❌ Error loading audio: ${error.message}`, 'error');
-        fileInfoEl.style.display = 'none';
-        audioBuffer = null;
-    }
-}
-
-// ======= AUDIO PLAYBACK CONTROLS =======
-function togglePlayback() {
-    if (!audioBuffer) return;
-    
-    if (audioElement && !audioElement.paused) {
-        audioElement.pause();
-        this.textContent = '▶ Play';
-    } else {
-        if (!audioElement) {
-            // Create audio element from buffer
-            const audioContext = new AudioContext();
-            const source = audioContext.createBufferSource();
-            source.buffer = audioBuffer;
-            source.connect(audioContext.destination);
-            source.start();
-            audioElement = source;
-            
-            audioElement.onended = () => {
-                if (isFileLooping) {
-                    togglePlayback();
-                }
-            };
-        } else {
-            // Resume playback
-            const audioContext = new AudioContext();
-            const source = audioContext.createBufferSource();
-            source.buffer = audioBuffer;
-            source.connect(audioContext.destination);
-            source.start();
-            audioElement = source;
-        }
-        this.textContent = '⏸ Pause';
-    }
-}
-
-function pausePlayback() {
-    if (audioElement) {
-        audioElement.stop();
-        document.getElementById('playFileBtn').textContent = '▶ Play';
-    }
-}
-
-function stopPlayback() {
-    if (audioElement) {
-        audioElement.stop();
-        audioElement = null;
-        document.getElementById('playFileBtn').textContent = '▶ Play';
-    }
-}
-
-function toggleLoop() {
-    isFileLooping = !isFileLooping;
-    this.textContent = isFileLooping ? '↻ Looping' : '↻ Loop';
-}
-
-// ======= MICROPHONE HANDLING =======
-document.getElementById('micBtn').addEventListener('click', async function() {
-    if (micStream) {
-        // Stop microphone
-        micStream.getTracks().forEach(track => track.stop());
-        micStream = null;
-        this.textContent = '🎤 ACTIVATE MICROPHONE';
-        document.getElementById('micStatus').textContent = 'Inactive';
-        showMessage('Microphone deactivated', 'warning');
-        updateStartButtonState();
-        return;
-    }
-    
-    try {
-        micStream = await navigator.mediaDevices.getUserMedia({ 
-            audio: {
-                echoCancellation: false,
-                noiseSuppression: false,
-                autoGainControl: false,
-                channelCount: 1
-            } 
-        });
-        
-        this.textContent = '🎤 MICROPHONE ACTIVE';
-        document.getElementById('micStatus').textContent = 'Active';
-        showMessage('Microphone activated successfully!', 'success');
-        
-        // Switch to mic tab if not already
-        const micTab = document.querySelector('[data-tab="mic"]');
-        if (!micTab.classList.contains('active')) {
-            micTab.click();
-        }
-        
-        updateStartButtonState();
-        
-    } catch (error) {
-        showMessage(`Failed to access microphone: ${error.message}`, 'error');
-        document.getElementById('micStatus').textContent = 'Error';
-    }
-});
-
-// ======= CHOIR PROCESSING =======
-document.getElementById('startChoirBtn').addEventListener('click', async function() {
-    if (currentInputType === 'mic' && !micStream) {
-        showMessage('Please activate microphone first', 'error');
-        return;
-    }
-    
-    if (currentInputType === 'file' && !audioBuffer) {
-        showMessage('Please load an audio file first', 'error');
-        return;
-    }
-    
-    // Initialize Tone.js
-    await Tone.start();
-    Tone.context.resume();
-    
-    // Get parameters
-    const octaves = parseInt(document.getElementById('octaves').value);
-    const voices = parseInt(document.getElementById('voices').value);
-    const preset = document.getElementById('preset').value;
-    const key = document.getElementById('key').value;
-    const customIntervals = document.getElementById('customIntervals').value;
-    
-    // Clear previous choir
-    if (choirLayers.length > 0) {
-        choirLayers.forEach(layer => {
-            layer.forEach(voice => {
-                voice.disconnect();
-            });
-        });
-        choirLayers = [];
-    }
-    
-    // Setup audio chain
-    masterGain = new Tone.Gain(0.7).toDestination();
-    reverbNode = new Tone.Reverb({
-        decay: 3,
-        wet: 0.6
-    }).connect(masterGain);
-    
-    // Create input based on type
-    if (currentInputType === 'mic') {
-        audioInput = new Tone.UserMedia();
-        await audioInput.open(micStream);
-    } else {
-        // Create Tone.Player from buffer
-        const player = new Tone.Player({
-            url: audioBuffer,
-            loop: true,
-            autostart: true
-        }).connect(masterGain);
-        audioInput = player;
-    }
-    
-    // Create analyser
-    analyser = new Tone.Analyser('waveform', 1024);
-    audioInput.connect(analyser);
-    
-    // Get intervals
-    let intervals = [];
-    if (customIntervals.trim()) {
-        intervals = customIntervals.split(',').map(Number).filter(n => !isNaN(n));
-    } else {
-        intervals = getPresetIntervals(preset);
-    }
-    
-    // Create choir layers
-    for (let o = 0; o < octaves; o++) {
-        const layer = [];
-        for (let v = 0; v < voices; v++) {
-            const interval = intervals[v % intervals.length] + (o * 12);
-            
-            // Create pitch shift node
-            const pitchShift = new Tone.PitchShift({
-                pitch: interval,
-                windowSize: 0.1,
-                delayTime: 0.05
-            });
-            
-            // Create panner for stereo width
-            const pan = new Tone.Panner(((v / voices) * 2 - 1) * 0.7);
-            
-            // Create gain for volume control
-            const gain = new Tone.Gain(0.5 / (octaves * voices));
-            
-            // Connect nodes
-            audioInput.connect(pitchShift);
-            pitchShift.connect(pan);
-            pan.connect(gain);
-            gain.connect(reverbNode);
-            
-            layer.push({
-                pitchShift,
-                pan,
-                gain,
-                interval,
-                disconnect: () => {
-                    pitchShift.dispose();
-                    pan.dispose();
-                    gain.dispose();
-                }
-            });
-        }
-        choirLayers.push(layer);
-    }
-    
-    isChoirRunning = true;
-    document.getElementById('startChoirBtn').disabled = true;
-    document.getElementById('stopChoirBtn').disabled = false;
-    document.getElementById('recordBtn').disabled = false;
-    document.getElementById('previewBtn').disabled = false;
-    
-    document.getElementById('activeVoices').textContent = octaves * voices;
-    document.getElementById('processingStatus').textContent = 'Active';
-    document.getElementById('cpuLoad').textContent = '45%';
-    
-    showMessage('🎵 Choir processing started! Adjust settings in real-time.', 'success');
-    
-    // Start animation loop
-    function animate() {
-        if (!isChoirRunning) return;
-        
-        // Update CPU load simulation
-        if (Math.random() > 0.7) {
-            const load = 30 + Math.random() * 40;
-            document.getElementById('cpuLoad').textContent = Math.round(load) + '%';
-        }
-        
-        animationFrameId = requestAnimationFrame(animate);
-    }
-    
-    animate();
-});
-
-// ======= STOP PROCESSING =======
-document.getElementById('stopChoirBtn').addEventListener('click', function() {
-    if (!isChoirRunning) return;
-    
-    isChoirRunning = false;
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-    }
-    
-    // Disconnect all audio nodes
-    choirLayers.forEach(layer => {
-        layer.forEach(voice => {
-            voice.disconnect();
-        });
-    });
-    choirLayers = [];
-    
-    if (audioInput) {
-        if (audioInput.close) audioInput.close();
-        audioInput.disconnect();
-        audioInput = null;
-    }
-    
-    document.getElementById('startChoirBtn').disabled = false;
-    document.getElementById('stopChoirBtn').disabled = true;
-    document.getElementById('activeVoices').textContent = '0';
-    document.getElementById('processingStatus').textContent = 'Idle';
-    document.getElementById('cpuLoad').textContent = '0%';
-    
-    showMessage('Choir processing stopped', 'warning');
-});
-
-// ======= PRESET FUNCTIONS =======
-function getPresetIntervals(preset) {
-    switch(preset) {
-        case 'gospel': return [0, 4, 7, 10, 12, 14, 16];
-        case 'cinematic': return [0, 2, 4, 7, 11, 12];
-        case 'angelic': return [0, 5, 7, 12, 17, 19];
-        case 'octaves': return [-12, 0, 12, 24];
-        case 'unison': return [0, 0, 0, 0, 0, 0];
-        default: return [0, 4, 7];
+        showMessage('Error creating test tone: ' + error.message, 'error');
     }
 }
 
 // ======= UTILITY FUNCTIONS =======
-function showMessage(text, type) {
-    const messageEl = document.getElementById('uploadMessage');
+function showMessage(text, type = 'info') {
     messageEl.textContent = text;
     messageEl.className = `message ${type}`;
+    messageEl.style.display = 'block';
     
-    // Auto-hide success messages
+    // Auto-hide success messages after 5 seconds
     if (type === 'success') {
-        setTimeout(() => {
-            messageEl.style.display = 'none';
-        }, 5000);
-    } else {
-        messageEl.style.display = 'block';
+        setTimeout(hideMessage, 5000);
     }
+}
+
+function hideMessage() {
+    messageEl.style.display = 'none';
 }
 
 function formatFileSize(bytes) {
@@ -1030,75 +552,22 @@ function formatFileSize(bytes) {
 }
 
 function formatTime(seconds) {
+    if (isNaN(seconds) || seconds === Infinity) return '0:00';
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
-function updateStartButtonState() {
-    const startBtn = document.getElementById('startChoirBtn');
-    
-    if (currentInputType === 'mic') {
-        startBtn.disabled = !micStream;
-    } else {
-        startBtn.disabled = !audioBuffer;
-    }
-}
+// ======= INITIALIZE =======
+console.log('Audio Upload Test initialized');
+statusEl.textContent = 'Ready - Click or drag audio file to upload';
 
-// ======= EXPORT FUNCTIONS =======
-document.getElementById('recordBtn').addEventListener('click', async function() {
-    if (!isChoirRunning) {
-        showMessage('Start choir processing first', 'error');
-        return;
-    }
-    
-    try {
-        const dest = Tone.context.createMediaStreamDestination();
-        masterGain.connect(dest);
-        
-        recordedChunks = [];
-        mediaRecorder = new MediaRecorder(dest.stream);
-        
-        mediaRecorder.ondataavailable = (e) => {
-            if (e.data.size > 0) {
-                recordedChunks.push(e.data);
-            }
-        };
-        
-        mediaRecorder.onstop = () => {
-            const blob = new Blob(recordedChunks, { type: 'audio/webm' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `cinematic_choir_${Date.now()}.wav`;
-            a.click();
-            
-            showMessage('✅ Recording downloaded!', 'success');
-        };
-        
-        mediaRecorder.start();
-        this.textContent = '⏺ Recording...';
-        this.disabled = true;
-        
-        // Stop recording after 30 seconds
-        setTimeout(() => {
-            if (mediaRecorder.state === 'recording') {
-                mediaRecorder.stop();
-                this.textContent = '⏺ Record Live';
-                this.disabled = false;
-            }
-        }, 30000);
-        
-    } catch (error) {
-        showMessage(`Recording error: ${error.message}`, 'error');
+// Clean up on page unload
+window.addEventListener('beforeunload', () => {
+    if (audioUrl) {
+        URL.revokeObjectURL(audioUrl);
     }
 });
-
-// Update system status every 5 seconds
-setInterval(() => {
-    document.getElementById('systemStatus').textContent = 'Ready';
-}, 5000);
 </script>
 </body>
 </html>
